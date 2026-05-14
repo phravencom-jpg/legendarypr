@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProductsHubBD - আমরা ফিরে আসছি!</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+        .container {
+            background: #ffffff;
+            padding: 50px 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-width: 650px;
+            width: 90%;
+        }
+        h1 {
+            color: #e74c3c;
+            margin-bottom: 10px;
+            font-size: 2rem;
+        }
+        p {
+            font-size: 1.2rem;
+            color: #555;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        #countdown {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            font-size: 2.2rem;
+            font-weight: bold;
+        }
+        .time-box {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            min-width: 80px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: normal;
+            margin-top: 5px;
+            color: #ecf0f1;
+        }
+        @media (max-width: 480px) {
+            #countdown { gap: 10px; font-size: 1.5rem; }
+            .time-box { min-width: 60px; padding: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>সাময়িক অসুবিধার জন্য আমরা দুঃখিত!</h1>
+        <p><strong>productshubbd.com</strong>-এ কিছু জরুরি আপডেটের কাজ চলছে। তাই ওয়েবসাইটটি সাময়িকভাবে বন্ধ আছে। আগামী <strong>২৭শে অক্টোবর (২০২৭)</strong> আমরা আবার আপনাদের মাঝে ফিরে আসছি। আপনাদের ধৈর্যের জন্য ধন্যবাদ!</p>
+        
+        <div id="countdown">
+            <div class="time-box"><span id="days">00</span><span class="label">দিন</span></div>
+            <div class="time-box"><span id="hours">00</span><span class="label">ঘণ্টা</span></div>
+            <div class="time-box"><span id="minutes">00</span><span class="label">মিনিট</span></div>
+            <div class="time-box"><span id="seconds">00</span><span class="label">সেকেন্ড</span></div>
+        </div>
+    </div>
+
+    <script>
+        // Target Date: 27 October 2027, 00:00:00
+        const countDownDate = new Date("Oct 27, 2027 00:00:00").getTime();
+
+        const timer = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = countDownDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = days.toString().padStart(2, '0');
+            document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
+            document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
+            document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
+
+            // Countdown শেষ হলে কী দেখাবে
+            if (distance < 0) {
+                clearInterval(timer);
+                document.getElementById("countdown").innerHTML = "<h2 style='color: #27ae60;'>আমরা ফিরে এসেছি! দয়া করে পেজটি রিফ্রেশ করুন।</h2>";
+            }
+        }, 1000);
+    </script>
+
+</body>
+</html>
